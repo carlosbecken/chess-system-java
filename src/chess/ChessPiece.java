@@ -5,7 +5,7 @@ import boardgame.Piece;
 import boardgame.Position;
 
 public abstract class ChessPiece extends Piece {
-	
+
 	private Color color;
 
 	public ChessPiece(Board board, Color color) {
@@ -13,14 +13,16 @@ public abstract class ChessPiece extends Piece {
 		this.color = color;
 	}
 
-	public Color getColor() {   // a cor pode ser acessada 
-								// nao tem set pq a cor nao pode ser mudada 	
+	public Color getColor() {
 		return color;
+	}
+	
+	public ChessPosition getChessPosition() {
+		return ChessPosition.fromPosition(position);
 	}
 	
 	protected boolean isThereOpponentPiece(Position position) {
 		ChessPiece p = (ChessPiece)getBoard().piece(position);
 		return p != null && p.getColor() != color;
 	}
-
 }
